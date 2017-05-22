@@ -1,0 +1,54 @@
+<% content_for :header_tags do %>
+  <script type="text/javascript">
+    jQuery(function($) {
+      $("#settings form").attr('action', '/mattermost_settings/update_common_data');
+    });
+  </script>
+<% end %>
+
+<h3 class="attributes-group--header-text ng-binding">incoming hooks</h3>
+</br>
+<div class="form--field">
+  <%= styled_label_tag("settings[mattermost_incoming_hooks_tokens]", l(:mattermost_incoming_hooks_tokens)) %>
+  <%= styled_text_field_tag("settings[mattermost_incoming_hooks_tokens]", settings['mattermost_incoming_hooks_tokens']) %>
+</div>
+</br>
+
+<h3 class="attributes-group--header-text ng-binding">User synchronization table</h3>
+</br>
+<table class="font-22">
+  <thead>
+    <tr>
+      <th>
+        <div class="generic-table--sort-header-outer">
+          <div class="generic-table--sort-header">
+            <span>
+              PM login
+            </span>
+          </div>
+        </div>
+      </th>
+      <th>
+        <div class="generic-table--sort-header-outer">
+          <div class="generic-table--sort-header">
+            <span>
+              mattermost name
+            </span>
+          </div>
+        </div>
+      </th>
+    </tr>
+    </thead>
+  <tbody>
+    <%= fields_for(:mattermost_users) do |data_fields| %>
+      <% User.active.each do |user| %>
+        <%= data_fields.fields_for(user.login, user.mattermost_user || MattermostUser.new(user: user)) do |fields| %>
+          <tr>
+            <td><%= user.login %></td>
+            <td><%= fields.text_field(:name) %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

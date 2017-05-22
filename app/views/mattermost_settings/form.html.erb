@@ -1,0 +1,35 @@
+<% html_title(l(:label_mattermost_setting)) %>
+
+<%= styled_form_tag(controller: :mattermost_settings, action: :update_data, project_id: @project.id) do %>
+
+  <h1><%=l(:label_mattermost_setting)%></h1>
+
+  <p>
+    <%= fields_for(:data) do |data_fields| %>
+      <% @data.each do |key, settings| %>
+        <h3 class="attributes-group--header-text ng-binding"><%= key.humanize %></h3>
+        </br>
+        <% settings.each do |item| %>
+          <p>
+            <%= data_fields.fields_for(item.setting.name, item) do |fields| %>
+              <label for=<%="#{item.setting.name}_enabled" %> class="form--label-with-check-box">
+                <span class="form--check-box-container">
+                  <%= fields.check_box(:enabled, {}, "true", "false") %>
+                </span>
+                <%= item.setting.title %>
+              </label>
+              <% if item.setting.value_is_editable %>
+                <%= fields.text_field(:value) %>
+              <% end %>
+            <% end %>
+          </p>
+        <% end %>
+        </br>
+      <% end %>
+    <% end %>
+
+    </br>
+    <%= styled_button_tag(l(:button_save), class: '-highlight -with-icon icon-checkmark') %>
+  </p>
+
+<% end %>

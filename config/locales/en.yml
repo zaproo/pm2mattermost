@@ -1,0 +1,4 @@
+en:
+  label_mattermost_setting: Mattermost Settings
+  mattermost_setting_updated_successfully: Mattermost settings updated successfully
+  mattermost_incoming_hooks_tokens: Tokens (separated by space)
