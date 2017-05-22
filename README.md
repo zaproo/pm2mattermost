@@ -22,7 +22,7 @@ rake db:migrate
 
 More information about OpenProject plugins you can get [here](https://www.openproject.org/open-source/development-free-project-management-software/create-openproject-plugin/).
 
-After installing plugin go to the project settings page and on Modules tab activate Mattermost Settings option. After this you'll see Mattermost Settings menu (right underneath Project Settins) where you can set outcoming hook urls, enable tracking some events. Go to global plugin page for adjusting openproject to mattermost user syncronization table and set incoming hooks tokens.
+After installing plugin go to the project settings page and on Modules tab activate Mattermost Settings option. After this you'll see Mattermost Settings menu (right underneath Project Settings) where you can set outcoming hook urls, enable tracking some events. Go to global plugin page for adjusting openproject to mattermost user syncronization table and set incoming hooks tokens.
 
 ## Incoming hooks (use POST method for all hooks)
 - add message to task
