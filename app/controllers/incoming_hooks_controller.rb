@@ -21,7 +21,7 @@ class IncomingHooksController < ActionController::Base
 
     assigned_to = @op_user.present? ? @op_user : @user
 
-    tasks = WorkPackage.open.visible.where(assigned_to: assigned_to)
+    tasks = WorkPackage.with_status_open.visible.where(assigned_to: assigned_to)
     tasks = tasks.where(project: assigned_to.projects) if @op_user.present?
     tasks = tasks.joins(:priority).order("enumerations.position desc")
 

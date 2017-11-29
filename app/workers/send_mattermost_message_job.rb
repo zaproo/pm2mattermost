@@ -125,5 +125,11 @@ class SendMattermostMessageJob < ApplicationJob
   def fix_markup(text)
     text.gsub(/^\s*[#*]\s+/m, ' * ')
         .gsub(/\s*(\#+)\s+/, ' _\1_ ')
+        .gsub(/user\#\d+/) do |result|
+           id = result.split('#').last
+           user = User.find_by(id: id)
+           mm_user = user&.mattermost_user&.name || user&.login || result
+           "@#{mm_user}"
+         end
   end
 end
