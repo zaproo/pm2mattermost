@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.version     = OpenProject::Mattermost::VERSION
   s.authors     = "Zaproo"
   s.email       = "zaproo@zaproo.com"
-  s.homepage    = "https://git.zaproo.net/zaproo/pm2mattermost"
+  s.homepage    = "https://github.com/zaproo/pm2mattermost"
   s.summary     = 'OpenProject Mattermost'
   s.description = "Integration OpenProject with Mattermost"
   s.license     = "MIT"
