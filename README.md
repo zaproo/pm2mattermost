@@ -10,7 +10,7 @@ To include the new plugin into OpenProject, you have to add it into Gemfile.plug
 
 ```
 group :opf_plugins do
-  gem "openproject-mattermost", git: "https://git.zaproo.net/zaproo/pm2mattermost.git", :branch => "master"
+  gem "openproject-mattermost", git: "https://github.com/zaproo/pm2mattermost.git", :branch => "master"
 end
 ```
 
